@@ -24,7 +24,7 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget{
 									child:
 									RaisedButton(
 											onPressed: (){},
-											child: Text('EN/VN')	
+											child: Text('EN/VN', style: tsraisedbutton)	
 
 
 									)
