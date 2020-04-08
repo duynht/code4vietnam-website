@@ -12,7 +12,7 @@ class CustomCard extends StatelessWidget{
 	final TextStyle tsbody = const TextStyle(
 			fontFamily: 'Roboto',
 			fontSize: 18,
-			fontWeight: FontWeight.w300 //light
+			fontWeight: FontWeight.w300, //light
 	);
 	final TextStyle tsbottom = const TextStyle(
 			fontFamily: 'Roboto',
@@ -30,21 +30,30 @@ class CustomCard extends StatelessWidget{
 				width: 270,
 				height: 260,
 				child: Column(
+						mainAxisAlignment: MainAxisAlignment.spaceBetween,
+						crossAxisAlignment: CrossAxisAlignment.start,
 						children: <Widget>[
-							Padding(
-									padding: EdgeInsets.fromLTRB(30,48,0,0),
-									child: Text(title,style:tstitle),
-							),
-							Padding(
-									padding: EdgeInsets.fromLTRB(30,15,0,0),	
-									child: Text(body_content,style:tsbody),
-							),
-							Padding(
-									padding: EdgeInsets.fromLTRB(30,0,0,50),	
-									child: Text(bottom_content, style:tsbottom),
+							Padding( 
+									padding: EdgeInsets.only(left:30,top:48),
+									child:
+									Column( 
+										crossAxisAlignment: CrossAxisAlignment.start,
+										children: <Widget>[
+										Text(title, textAlign:TextAlign.left, style:tstitle),
+										Padding( 
+												padding: EdgeInsets.only(top:15),
+												child:Text(body_content, textAlign:TextAlign.left, style:tsbody),
+												)
+									]
+									)
+								),
+							Padding( 
+									padding: EdgeInsets.only(left:30,bottom:50),
+									child:
+									Text(bottom_content,textAlign:TextAlign.left, style:tsbottom),
 							)
 						],	
 				)
-		);	
+						);	
 	}	
 }
