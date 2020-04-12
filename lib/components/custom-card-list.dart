@@ -1,4 +1,4 @@
-Import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:code4vietnam/components/custom-card.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -38,18 +38,22 @@ class CustomCardList extends StatelessWidget{
 						mainAxisAlignment: MainAxisAlignment.spaceBetween,
 						children: _customCardList
 						)
+					]
 			);		
 		}
-		else return Row( children: [
-			Text('Featured Projects',
-					style: TextStyle(
-							fontFamily: 'Roboto',
-							fontWeight: FontWeight.bold,
-							fontSize:36,
-							color: Colors.grey[800]
-					)	
+		else return Column( children: [
+			Padding(
+					padding: EdgeInsets.only(top:70,bottom:30), 
+					child: 
+					Text('Featured Projects',
+							style: TextStyle(
+									fontFamily: 'Roboto',
+									fontWeight: FontWeight.bold,
+									fontSize:36,
+									color: Colors.grey[800]
+							)	
+					),
 			),
-			,
 			CarouselSlider(
 					height:260,
 					autoPlay: true,
@@ -57,9 +61,8 @@ class CustomCardList extends StatelessWidget{
 					autoPlayAnimationDuration: Duration(milliseconds: 1200),
 					autoPlayInterval: Duration(seconds: 3),
 					items: _customCardList
-		]
-			)
-		);
+			)]
+					);
 	}
 	@override
 	Widget build(BuildContext context){
@@ -68,11 +71,7 @@ class CustomCardList extends StatelessWidget{
 		else{
 			_customCardList = _CreateCard();
 			print(_customCardList);
-			return 
-					_axisCount(context)
-
-					]
-					);
+			return builder(context);
 		}
 	}
 
