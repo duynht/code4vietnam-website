@@ -13,8 +13,9 @@ final TextTheme textTheme = const TextTheme(
 		button: const TextStyle(color: Colors.white)	
 );
 
+final Color primary_color = Colors.green[700];
 final ThemeData themeData =  ThemeData( 
-		primaryColor: Colors.green[400],
-		buttonColor: Colors.green[400],
+		primaryColor: primary_color,
+		buttonColor: primary_color,
 		textTheme: textTheme	
 	);

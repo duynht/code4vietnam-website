@@ -11,6 +11,7 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget{
 	@override
 	Widget build(BuildContext context){
 		return Container(
+				color: Colors.white,
 				child: Row(
 						mainAxisAlignment: MainAxisAlignment.spaceBetween,
 						children: <Widget>[

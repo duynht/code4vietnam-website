@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget{
-	final String title;
-	final String body_content;
-	final String bottom_content;
+
+
+	String _title;
+	String _body_content;
+	String _bottom_content;
 
 	final TextStyle tstitle = const TextStyle(
 			fontFamily: 'Roboto',
@@ -21,14 +23,32 @@ class CustomCard extends StatelessWidget{
 			decoration: TextDecoration.underline,
 	);
 
-	CustomCard({Key key, this.title, this.body_content, this.bottom_content}) : super(key: key);
-
+	CustomCard(Map content){
+		_title = content['title'];
+		_body_content = content['body'];
+		_bottom_content = content['bottom'];
+	}
 	@override
 	Widget build(BuildContext context){
 		return Container(
-				color: Colors.white,
+				//color: Colors.white,
 				width: 270,
 				height: 260,
+				decoration: new BoxDecoration(
+						color: Colors.white,
+						boxShadow: [
+							BoxShadow(
+									color: Colors.grey,
+									blurRadius: 10.0, // has the effect of softening the shadow
+									spreadRadius: 0.0, // has the effect of extending the shadow
+									offset: Offset(
+											5.0, // horizontal, move right 10
+											5.0, // vertical, move down 10
+									),
+							)
+						],
+
+				),
 				child: Column(
 						mainAxisAlignment: MainAxisAlignment.spaceBetween,
 						crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,23 +57,23 @@ class CustomCard extends StatelessWidget{
 									padding: EdgeInsets.only(left:30,top:48),
 									child:
 									Column( 
-										crossAxisAlignment: CrossAxisAlignment.start,
-										children: <Widget>[
-										Text(title, textAlign:TextAlign.left, style:tstitle),
-										Padding( 
-												padding: EdgeInsets.only(top:15),
-												child:Text(body_content, textAlign:TextAlign.left, style:tsbody),
+											crossAxisAlignment: CrossAxisAlignment.start,
+											children: <Widget>[
+												Text(_title, textAlign:TextAlign.left, style:tstitle),
+												Padding( 
+														padding: EdgeInsets.only(top:15),
+														child:Text(_body_content, textAlign:TextAlign.left, style:tsbody),
 												)
-									]
+											]
 									)
-								),
+							),
 							Padding( 
 									padding: EdgeInsets.only(left:30,bottom:50),
 									child:
-									Text(bottom_content,textAlign:TextAlign.left, style:tsbottom),
+									Text(_body_content,textAlign:TextAlign.left, style:tsbottom),
 							)
 						],	
-				)
-						);	
+						)
+								);	
 	}	
 }
