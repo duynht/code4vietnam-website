@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:code4vietnam/theme/style.dart';
 class TopBarBottom extends StatelessWidget{
 	String _top;
 	String _middle;
@@ -11,28 +13,30 @@ class TopBarBottom extends StatelessWidget{
 	TextStyle textStyle = const TextStyle(
 				fontFamily: 'Roboto',
 			       	fontSize: 18,
-				fontColor: Colors.white	
+				color: Colors.white	
 			);
 	TextStyle middleStyle = const TextStyle(
 				fontFamily: 'Roboto',
 				fontSize: 36,
-				fontColor: Colors.white
+				color: Colors.white,
+				fontWeight: FontWeight.w500
 			);
 	@override
-	Widget builder(BuildContext context){
+	Widget build(BuildContext context){
 		return Container(
 				height:160,
-				decoporation: BoxDecoration(
-						color: Colors.green[700]
+				width: MediaQuery.of(context).size.width,
+				decoration: BoxDecoration(
+						color: primary_color, 
 						),
 				child: Padding(
-						padding: EdgeInsets.fromLTBR(96,30,30,40),
+						padding: EdgeInsets.fromLTRB(96,25,40,25),
 						child: Column(
-								crossAxisAlignment: CrosssAxisAlignment.start,
+								crossAxisAlignment: CrossAxisAlignment.start,
 								children: <Widget>[
-									Text(),
-									Text(),
-									Text()	
+									Text(_top,style: textStyle),
+									Text(_middle,style: middleStyle),
+									Text(_bottom,style: textStyle)	
 								]
 								)
 						)

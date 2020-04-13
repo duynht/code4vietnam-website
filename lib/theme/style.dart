@@ -13,7 +13,7 @@ final TextTheme textTheme = const TextTheme(
 		button: const TextStyle(color: Colors.white)	
 );
 
-final Color primary_color = Colors.green[700];
+final Color primary_color = Color.fromRGBO(33,150,83,1);
 final ThemeData themeData =  ThemeData( 
 		primaryColor: primary_color,
 		buttonColor: primary_color,
