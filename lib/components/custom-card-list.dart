@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:code4vietnam/components/custom-card.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
+import 'package:code4vietnam/theme/style.dart';
 class CustomCardList extends StatelessWidget{
 
 	List<Map> _content;
@@ -31,7 +31,7 @@ class CustomCardList extends StatelessWidget{
 												fontFamily: 'Roboto',
 												fontWeight: FontWeight.bold,
 												fontSize:36,
-												color: Colors.grey[800]
+												color: defaultTitleColor
 										)	
 								),
 						),				       	Row(

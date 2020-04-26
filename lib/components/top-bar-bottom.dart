@@ -27,7 +27,7 @@ class TopBarBottom extends StatelessWidget{
 				height:160,
 				width: MediaQuery.of(context).size.width,
 				decoration: BoxDecoration(
-						color: primary_color, 
+						color: primaryColor, 
 						),
 				child: Padding(
 						padding: EdgeInsets.fromLTRB(96,25,40,25),

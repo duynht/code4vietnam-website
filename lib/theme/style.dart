@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+final Color primaryColor = const Color.fromRGBO(33,150,83,1);
+final Color backgroundColor = const Color.fromRGBO(226,226,226,1);
+final Color defaultTitleColor = const Color.fromRGBO(79,79,79,1);
+
 final TextStyle tstitle = const TextStyle(
 		fontSize: 36,
 		fontFamily: 'Noto Sans'
@@ -13,9 +17,8 @@ final TextTheme textTheme = const TextTheme(
 		button: const TextStyle(color: Colors.white)	
 );
 
-final Color primary_color = Color.fromRGBO(33,150,83,1);
 final ThemeData themeData =  ThemeData( 
-		primaryColor: primary_color,
-		buttonColor: primary_color,
+		primaryColor: primaryColor,
+		buttonColor: primaryColor,
 		textTheme: textTheme	
 	);
