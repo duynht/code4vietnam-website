@@ -1,46 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:code4vietnam/theme/style.dart';
-import 'package:code4vietnam/components/top-bar-bottom.dart';
-class TopBar extends StatelessWidget implements PreferredSizeWidget{
-	final String title;
-	final PreferredSizeWidget bottom; 
-	TopBar({Key key, this.title, this.bottom}) : super(key: key);
-	@override
-	Size get preferredSize {
-		if(bottom != null) return new Size.fromHeight(bottom.preferredSize.height + 92.0);
-		return new Size.fromHeight(92.0);
-	}
 
-	@override
-	Widget build(BuildContext context){
-		return Column( 
-				crossAxisAlignment: CrossAxisAlignment.start,
-				children:[
-					Container(
-							color: Colors.white,
-							child: Row(
-									mainAxisAlignment: MainAxisAlignment.spaceBetween,
-									children: <Widget>[
-										Padding( 
-												padding: EdgeInsets.fromLTRB(96,26,0,26),
-												child:  
-												Text(title, style: tstitle),
-										),
-										Padding(	
-												padding: EdgeInsets.fromLTRB(0,26,26,36),
-												child:
-												RaisedButton(
-														onPressed: (){},
-														child: Text('EN/VN', style: tsraisedbutton)	
+class TopBar extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
+  TopBar({Key key, this.title});
+  @override
+  Size get preferredSize {
+    return new Size.fromHeight(100.0);
+  }
 
-
-												)
-										)
-									],
-							),	
-							),
-							(bottom != null)?bottom:Container()
-									]
-									);	
-	}
+  @override
+  Widget build(BuildContext context) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Container(
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(96, 25, 0, 25),
+              child: Text(title, style: tstitle),
+            ),
+            Padding(
+                padding: EdgeInsets.fromLTRB(0, 25, 35, 25),
+                child: RaisedButton(
+                    onPressed: () {},
+                    child: Text('EN/VN', style: tsraisedbutton)))
+          ],
+        ),
+      )
+    ]);
+  }
 }

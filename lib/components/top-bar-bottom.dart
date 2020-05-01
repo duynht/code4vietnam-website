@@ -24,7 +24,7 @@ class TopBarBottom extends StatelessWidget{
 	@override
 	Widget build(BuildContext context){
 		return Container(
-				height:160,
+				height:150,
 				width: MediaQuery.of(context).size.width,
 				decoration: BoxDecoration(
 						color: primaryColor, 
