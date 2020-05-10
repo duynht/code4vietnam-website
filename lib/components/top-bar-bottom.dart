@@ -4,10 +4,12 @@ class TopBarBottom extends StatelessWidget{
 	String _top;
 	String _middle;
 	String _bottom;
-	TopBarBottom(Map content){
+  EdgeInsets _edgeInsets;
+	TopBarBottom(Map content, EdgeInsets edgeInsets){
 		this._top = content['top'];
 		this._middle = content['middle'];
 		this._bottom = content['bottom'];	
+    this._edgeInsets = edgeInsets;
 	}
 
 	TextStyle textStyle = const TextStyle(
@@ -24,17 +26,18 @@ class TopBarBottom extends StatelessWidget{
 	@override
 	Widget build(BuildContext context){
 		return Container(
-				height:150,
+				height:170,
 				width: MediaQuery.of(context).size.width,
 				decoration: BoxDecoration(
 						color: primaryColor, 
 						),
 				child: Padding(
-						padding: EdgeInsets.fromLTRB(96,25,40,25),
+						padding: _edgeInsets,
 						child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
 								crossAxisAlignment: CrossAxisAlignment.start,
 								children: <Widget>[
-									Text(_top,style: textStyle),
+                  //Text(_top,style: textStyle),
 									Text(_middle,style: middleStyle),
 									Text(_bottom,style: textStyle)	
 								]

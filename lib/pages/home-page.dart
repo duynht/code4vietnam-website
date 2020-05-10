@@ -5,13 +5,17 @@ import 'package:code4vietnam/components/top-bar-bottom.dart';
 import 'package:code4vietnam/theme/style.dart';
 import 'package:code4vietnam/components/custom-rich-text.dart';
 
-Map map = {
-  "title": "Test",
-  "body": "something bla bla here",
-  "bottom": "bla bla here"
+List<Map> featureProjectList = [
+  {"title": "Test", "body": "something bla bla here", "bottom": "bla bla here"},
+  {"title": "Test", "body": "something bla bla here", "bottom": "bla bla here"},
+  {"title": "Test", "body": "something bla bla here", "bottom": "bla bla here"},
+  {"title": "Test", "body": "something bla bla here", "bottom": "bla bla here"}
+];
+Map topbarbottom = {
+  "top": "",
+  "middle": "Build impactful tech solution for social causes",
+  "bottom": "A project by IT students in Vietnam"
 };
-List<Map> a = [map, map, map, map];
-Map map1 = {"top": "top", "middle": "mid mid mid mid", "bottom": "bottom"};
 Map map2 = {"title": "asdfadsfasdfasdf", "content": "asdfadsfasdfadsfadsfadf"};
 
 class HomePage extends StatefulWidget {
@@ -22,23 +26,33 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final int WIDTHSIZE = 1000;
+
+  EdgeInsets GetPadding(BuildContext context, double top, double bottom) {
+    double padding = ((MediaQuery.of(context).size.width) - 1450) / 2 + 100;
+    padding = (padding > 0) ? padding : 55;
+    return EdgeInsets.only(
+        left: padding, right: padding, top: top, bottom: bottom);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: backgroundColor,
         appBar: TopBar(
           title: 'Code For Vietnam',
+          edgeInsets: GetPadding(context, 0, 0),
         ),
         body: ListView(children: [
-          TopBarBottom(map1),
+          TopBarBottom(topbarbottom, GetPadding(context, 25, 25)),
           Padding(
-              padding: EdgeInsets.only(left: 96, right: 96),
-              child: CustomCardList(a)),
+              padding: GetPadding(context, 0, 0),
+              child: CustomCardList(featureProjectList)),
           Center(
               child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
                   child: InkWell(
-                      onTap:(){},
+                      onTap: () {},
                       child: Text("View all projects",
                           style: TextStyle(
                               fontFamily: 'Roboto',
@@ -62,82 +76,164 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               child: Padding(
-                  padding: EdgeInsets.fromLTRB(96, 85, 0, 85),
+                  padding: GetPadding(context, 85, 55),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomRichText(
-                            map2,
-                            TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 36,
-                                color: const Color.fromRGBO(79, 79, 79, 1),
-                                fontWeight: FontWeight.w500)),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                  width: 560,
-                                  child: CustomRichText(
-                                      map2,
-                                      TextStyle(
-                                          fontFamily: 'Roboto',
-                                          fontSize: 18,
-                                          color: primaryColor,
-                                          fontWeight: FontWeight.w100))),
-                              Container(
-                                  width: 560,
-                                  child: CustomRichText(
-                                      map2,
-                                      TextStyle(
-                                          fontFamily: 'Roboto',
-                                          fontSize: 18,
-                                          color: primaryColor,
-                                          fontWeight: FontWeight.w100)))
-                            ]),
+                        (MediaQuery.of(context).size.width >= WIDTHSIZE)
+                            ? CustomRichText(
+                                map2,
+                                TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 36,
+                                    color: const Color.fromRGBO(79, 79, 79, 1),
+                                    fontWeight: FontWeight.w500))
+                            : Center(
+                                child: CustomRichText(
+                                    map2,
+                                    TextStyle(
+                                        fontFamily: 'Roboto',
+                                        fontSize: 36,
+                                        color: const Color.fromRGBO(
+                                            79, 79, 79, 1)))),
+                        (MediaQuery.of(context).size.width >= WIDTHSIZE)
+                            ? Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                    Container(
+                                        width: 560,
+                                        child: CustomRichText(
+                                            map2,
+                                            TextStyle(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 18,
+                                                color: primaryColor,
+                                                fontWeight: FontWeight.w100))),
+                                    Container(width: 130),
+                                    Container(
+                                        width: 560,
+                                        child: CustomRichText(
+                                            map2,
+                                            TextStyle(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 18,
+                                                color: primaryColor,
+                                                fontWeight: FontWeight.w100)))
+                                  ])
+                            : Center(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                    Container(
+                                        width: 560,
+                                        child: CustomRichText(
+                                            map2,
+                                            TextStyle(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 18,
+                                                color: primaryColor,
+                                                fontWeight: FontWeight.w100))),
+                                    Container(width: 130),
+                                    Container(
+                                        width: 560,
+                                        child: CustomRichText(
+                                            map2,
+                                            TextStyle(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 18,
+                                                color: primaryColor,
+                                                fontWeight: FontWeight.w100)))
+                                  ])),
                         Center(
                             child: Padding(
                                 padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
                                 child: RaisedButton(onPressed: () {})))
                       ]))),
           Padding(
-              padding: EdgeInsets.fromLTRB(96, 85, 0, 85),
-              child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                Container(
-                    width: 560,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomRichText(
-                            map2,
-                            TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 36,
-                                color: const Color.fromRGBO(79, 79, 79, 1),
-                                fontWeight: FontWeight.w500)),
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
-                            child: RaisedButton(onPressed: () {}))
-                      ],
-                    )),
-                Container(
-                    width: 560,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomRichText(
-                            map2,
-                            TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 36,
-                                color: const Color.fromRGBO(79, 79, 79, 1),
-                                fontWeight: FontWeight.w500)),
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
-                            child: RaisedButton(onPressed: () {}))
-                      ],
-                    )),
-              ])),
+              padding: GetPadding(context, 85, 55),
+              child: (MediaQuery.of(context).size.width >= WIDTHSIZE)
+                  ? Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                      Container(
+                          width: 560,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustomRichText(
+                                  map2,
+                                  TextStyle(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 36,
+                                      color:
+                                          const Color.fromRGBO(79, 79, 79, 1),
+                                      fontWeight: FontWeight.w500)),
+                              Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
+                                  child: RaisedButton(onPressed: () {}))
+                            ],
+                          )),
+                      Container(width: 130),
+                      Container(
+                          width: 560,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustomRichText(
+                                  map2,
+                                  TextStyle(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 36,
+                                      color:
+                                          const Color.fromRGBO(79, 79, 79, 1),
+                                      fontWeight: FontWeight.w500)),
+                              Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
+                                  child: RaisedButton(onPressed: () {}))
+                            ],
+                          )),
+                    ])
+                  : Center(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                          Container(
+                              width: 560,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomRichText(
+                                      map2,
+                                      TextStyle(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 36,
+                                          color: const Color.fromRGBO(
+                                              79, 79, 79, 1),
+                                          fontWeight: FontWeight.w500)),
+                                  Padding(
+                                      padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
+                                      child: RaisedButton(onPressed: () {}))
+                                ],
+                              )),
+                          Container(width: 130),
+                          Container(
+                              width: 560,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomRichText(
+                                      map2,
+                                      TextStyle(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 36,
+                                          color: const Color.fromRGBO(
+                                              79, 79, 79, 1),
+                                          fontWeight: FontWeight.w500)),
+                                  Padding(
+                                      padding: EdgeInsets.fromLTRB(0, 70, 0, 0),
+                                      child: RaisedButton(onPressed: () {}))
+                                ],
+                              )),
+                        ]))),
           Container(
               height: 560,
               decoration: new BoxDecoration(
