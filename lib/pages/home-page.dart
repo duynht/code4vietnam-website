@@ -26,27 +26,29 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final int WIDTHSIZE = 1000;
-
-  EdgeInsets GetPadding(BuildContext context, double top, double bottom) {
-    double padding = ((MediaQuery.of(context).size.width) - 1450) / 2 + 100;
-    padding = (padding > 0) ? padding : 55;
+  final int WIDTHSIZE = 1300;
+  final double PADDINGWIDTH = 1440;
+  final double DEFAULTPADDING = 20;
+  EdgeInsets GetPadding(BuildContext context, double top, double bottom, double width,double _default) {
+    double padding = ((MediaQuery.of(context).size.width) - width) / 2 + 100;
+    padding = (padding > 0) ? padding : _default;
     return EdgeInsets.only(
         left: padding, right: padding, top: top, bottom: bottom);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+        Padding( padding: GetPadding(context,0,0,PADDINGWIDTH,DEFAULTPADDING),child:Scaffold(
         backgroundColor: backgroundColor,
         appBar: TopBar(
           title: 'Code For Vietnam',
-          edgeInsets: GetPadding(context, 0, 0),
+          edgeInsets: EdgeInsets.fromLTRB(50, 0, 50, 0),
         ),
         body: ListView(children: [
-          TopBarBottom(topbarbottom, GetPadding(context, 25, 25)),
+          TopBarBottom(topbarbottom, EdgeInsets.fromLTRB(50, 25 , 55, 25)),
           Padding(
-              padding: GetPadding(context, 0, 0),
+              padding: EdgeInsets.fromLTRB(50, 0, 50, 0),
               child: CustomCardList(featureProjectList)),
           Center(
               child: Padding(
@@ -76,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               child: Padding(
-                  padding: GetPadding(context, 85, 55),
+                  padding: EdgeInsets.fromLTRB(50, 85, 50, 40),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -101,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                     Container(
-                                        width: 560,
+                                        width: 550,
                                         child: CustomRichText(
                                             map2,
                                             TextStyle(
@@ -109,9 +111,9 @@ class _HomePageState extends State<HomePage> {
                                                 fontSize: 18,
                                                 color: primaryColor,
                                                 fontWeight: FontWeight.w100))),
-                                    Container(width: 130),
+                                    Container(width: 30),
                                     Container(
-                                        width: 560,
+                                        width: 550,
                                         child: CustomRichText(
                                             map2,
                                             TextStyle(
@@ -125,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                     Container(
-                                        width: 560,
+                                        width: 550,
                                         child: CustomRichText(
                                             map2,
                                             TextStyle(
@@ -133,9 +135,9 @@ class _HomePageState extends State<HomePage> {
                                                 fontSize: 18,
                                                 color: primaryColor,
                                                 fontWeight: FontWeight.w100))),
-                                    Container(width: 130),
+                                    Container(width: 30),
                                     Container(
-                                        width: 560,
+                                        width: 550,
                                         child: CustomRichText(
                                             map2,
                                             TextStyle(
@@ -150,11 +152,11 @@ class _HomePageState extends State<HomePage> {
                                 child: RaisedButton(onPressed: () {})))
                       ]))),
           Padding(
-              padding: GetPadding(context, 85, 55),
+              padding: EdgeInsets.fromLTRB(50, 85, 50, 40),
               child: (MediaQuery.of(context).size.width >= WIDTHSIZE)
                   ? Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                       Container(
-                          width: 560,
+                          width: 550,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -171,9 +173,9 @@ class _HomePageState extends State<HomePage> {
                                   child: RaisedButton(onPressed: () {}))
                             ],
                           )),
-                      Container(width: 130),
+                      Container(width: 30),
                       Container(
-                          width: 560,
+                          width: 550,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -197,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                           Container(
-                              width: 560,
+                              width: 550,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -214,7 +216,7 @@ class _HomePageState extends State<HomePage> {
                                       child: RaisedButton(onPressed: () {}))
                                 ],
                               )),
-                          Container(width: 130),
+                          Container(width:  30),
                           Container(
                               width: 560,
                               child: Column(
@@ -235,7 +237,7 @@ class _HomePageState extends State<HomePage> {
                               )),
                         ]))),
           Container(
-              height: 560,
+              height: 550,
               decoration: new BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -251,6 +253,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               child: Column(children: [])),
-        ]));
+        ])));
   }
 }
